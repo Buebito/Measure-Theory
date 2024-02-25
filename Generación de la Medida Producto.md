@@ -21,7 +21,32 @@ Para continuar con esta demostración, recordemos el siguiente teorema que nos s
 **Teorema Auxiliar (Convergencia Monótona):** Sea $\{f_n\}$ una sucesión monótona creciente de funciones en $\mathcal{M^+}$ que converge a $f$ puntualmente, entonces $f\in\mathcal{M^+}$ y además
 $$\int f d\mu=\lim_{n \to \infty}\int f_n d\mu$$
 
-Como $A$ y $B$ son rectángulos medibles y $(A_i \times B_i)$ una sucesión de rectángulos entonces, aplicando el Teorema anterior obtenemos que $A_i$ y $B_i$ son medibles y fijando ya sea $x$ o $y$, tenemos
-$$\kappa(A)\xi_{B}(y)=\sum_{i=1}^{\infty}\kappa(A_j)\xi_{B_i}(y)$$
+Como $A\times B$ son rectángulos medibles y $(A_i \times B_i)$ una sucesión de rectángulos entonces, aplicando el Teorema anterior obtenemos que $(A_i\times B_i)$ son medibles y fijando ya sea $x$ o $y$, tenemos
+$$\kappa(A)\xi_{B}(y)=\sum_{i=1}^{\infty}\kappa(A_i)\xi_{B_i}(y)$$
 Ahora fijando $y$,
-$$\kappa(A)\lambda(B)=\sum_{i=1}^{\infty}\kappa(A_j)\lambda(B_j)$$
+$$\kappa(A)\lambda(B)=\sum_{i=1}^{\infty}\kappa(A_i)\lambda(B_i)$$
+
+Para continuar con la demostración, utilicemos el siguiente resultado
+
+$$\underline{\text{Lema}}: \text{Sea }C=A\times B\text{ un rectángulo medible, entonces la unión finita de todos los rectángulos } C_0\text{ es un álgebra de subconjuntos de C}.$$
+
+Esto es fácil de demostrar ya que,
+
+* Con $\kappa$ y $\lambda$ bien definidas, podemos tomarnos cualquier rectángulo de medida cero y así obtener el conjunto vacío $\implies \emptyset\in C_0$
+* Sea $R\in A_i \times B_i$ dentro de $C=A \times B$. El complemento $R^c$ de $R$ en $C$ se puede expresar como la unión de rectángulos que cubren el resto de $C$ sin solaparse con $R^c$. Esto se puede hacer dividiendo $C$ en rectángulos que no incluyen a $R$ y cuya unión junto con $R$ recomponen a $C$ $\implies$ si $R\in C_0$ entonces $R^c\in C_0$
+* La unión finita de cualquier conjunto de rectángulos $C_0$ dentro de $C$ es simplemente otro subconjunto de $C$ que puede ser cubierto por una unión finita de rectángulos, cada uno de los cuales es un miembro de nuestra colección. Esto es porque podemos reorganizar o combinar estos rectángulos en un número finito de rectángulos más grandes, para cubrir la unión deseada sin salirnos de $C$.
+
+Este lema nos sirve ya que si $R\in C_0$, entonces, por definición (y dado que es álgebra de $C$),
+
+$$R=\bigcup_{i=1}^{n}(A_i\times B_i)$$
+
+con $A_j\times B_j$ son rectángulos disjuntos. Al definir la medida $\mu$ como
+
+$$\mu(R)=\sum_{i=1}^n\kappa(A_i)\lambda(B_i)$$
+
+notamos que la medida queda bien definida ya que
+
+* Sean $\kappa$ y $\lambda$ medidas bien definidas, $\mu(\emptyset)=\sum_{i=1}^n\kappa(\emptyset)\lambda(B_j)$=0 por propiedades de la medida.
+* Como $\kappa(A_i)\geq0$ y $\lambda(B_i)\geq0\quad\forall i\implies \mu(R)\geq0\quad\forall R$
+
+Por lo que $\mu$ está bien definida $\square$
